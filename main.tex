@@ -1,0 +1,100 @@
+\documentclass[twocolumn]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts,amsthm,amsmath,amssymb,tikz}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{natbib}
+% \usepackage{multicol}
+% \setlength{\columnsep}{1cm}
+
+ 
+\title{The Thirsty Bunny Problem}
+\author{Iris R. Seaman}
+\date{March 2019}
+
+\begin{document}
+\maketitle
+
+\section{Theory of Mind Formulation}
+Theory of mind formulations are about having agents form their own beliefs about other agent's beliefs, intent, and sometimes knowledge. When working in a multi-agent environment, this requires formulating beliefs about other agent's beliefs about other agents as well. This recursive pattern of forming beliefs about other beliefs and so forth becomes exponentially complex as the levels of reasoning deepens. Therefore, we aim to generalize a way of formulating reasoning about reasoning and inferring other hidden attributes such as intent and knowledge on probabilistic models that can describe a prior distribution of some agent and its environment. As a concrete example of an application in which a theory of mind formulation can be applied to, we introduce the Thirsty Bunny problem. However, we begin the section by describing hidden attributes in a theory of mind problem and the significance these attributes hold in revealing specific information about another agent. 
+
+\section{Hidden Attributes in Theory of Mind Problems}
+
+Theory of mind problems are non-trivial due to the fact that an agent can not read minds. In order for agents to reason about what another agent is thinking, what it knows, and what it hopes to accomplish, it needs form answers to all those questions with observations of the agent. Observations, in a general sense, can include and is not limited to facial expressions, body movement, verbal responses, etc. 
+As agents aim to understand what another agent's understanding is, they must reason about the observations of the agent to form conclusions of the other agent's mental state. We can define different aspects of another agent's mental state as \textbf{hidden attributes}. Hidden attributes include \textit{beliefs, intent,} and \textit{knowledge} of other agents.  
+%  When agents simulate theory of mind, they have the ability to learn hidden attributes from observations. Hidden attributes can be another agent's beliefs, desires, intents, emotions, and knowledge. These attributes can not be directly learnt unless the other agent explicitly reveals the hidden information, or makes inferences based on exposed observations of the agent.
+ 
+ The Thirsty bunny problem is motivated by the idea that agents can learn more than just the beliefs of other agents, but can also learn their intent and knowledge using a theory of mind formulation. However, before describing the problem we briefly define each of the hidden attributes mentioned. 
+
+\subsection{Defining Hidden Attributes}
+
+\noindent \textbf{Intent:} The intent of an agent can be described by answering the question of \textit{what does it want?}. It can be described as a desire, but more specifically, intent defines a goal an agent has yet to accomplish. \\
+
+\noindent \textbf{Belief:} The belief of an agent describes states of the world that an agent has not yet confirmed is true, but has made a supported guess with observations. \\
+
+\noindent \textbf{Knowledge:} An agent's knowledge is information that has been confirmed to be true. Truth can be established by patterns that are consistently confirmed, laws or nature, or proofs. 
+
+\subsection{Belief vs Knowledge} The two hidden attributes of belief and knowledge can be intermingled quite easily. However, we note that each of the attributes can support the other. Given prior knowledge, beliefs can be updated with new information. Reversely, beliefs that are repeatedly confirmed can be established as new knowledge and do not require to be further inferred. 
+
+\section{The Thirsty Bunny Problem}
+
+\subsection{Motivation}
+This problem is formulated to motivate the application of theory of mind in order to learn several aspects of the mental states of other agents. Specifically we formulate the problem in such a way what we can define a joint formulation to learn beliefs, intent, and knowledge of other agents and perhaps even in a recursive manner. 
+
+\subsection{Background}
+We now describe a multi-agent scenario described as the Thirsty Bunny Problem. Given a map of the environment, a group of bunnies, $b \in \mathcal{B}$, bunny $i$, $b_i$, must learn how to survive by drinking at the watering hole when thirsty by performing theory of mind on other bunnies. By doing the bunny aims to learn 1) which other bunnies are wisest and can be trusted ( in order to mimic actions) , 2) when and if the watering hole is safe to go to, 3) when a predator is hunting. 
+
+\subsection{Bunny Basics}
+Each bunny ages independently. When $b_i$ dies of age, thirst, or predator, $b_j$ replaces $b_i$ in the group and is considered \textit{new}. New $b$s have basic knowledge of environment. They are rewarded each time period they remain alive. \\
+
+\noindent\textbf{Ways a bunny can die:}
+\begin{itemize}
+	\item if they do not drink from the watering hold
+    \item if seen by hungry predator
+    \item age 
+\end{itemize}
+
+\noindent\textbf{New bunny's prior knowledge:}
+\begin{itemize}
+    \item map of the environment
+    \item rewarded by staying alive
+    \item its own age (constantly updated)
+    \item time period of day (constantly updated)
+\end{itemize}
+
+\noindent\textbf{What new bunnies do not know:}
+\begin{itemize}
+    \item how they will die
+    \item when they will die
+    \item other bunnies' ages
+\end{itemize}
+
+\noindent\textbf{What bunnies should learn:}
+\begin{itemize}
+    \item which bunnies are oldest/wisest
+    \item (in group) following the patterns of wisest bunnies
+        \begin{itemize}
+            \item when it is safe to drink
+            \item when a predator is hungry 
+        \end{itemize}
+    \item (alone) when a predator are hungry
+    \item (alone) when it is safe to drink
+\end{itemize}
+
+\section{Predator Basics}
+
+The basics for predators are simple. If predators are hungry and detect a bunny they will chase it and eat it. If they are not hungry because they are still full off the previous meal, they will not harm any bunnies in line of sight. Predators spend most of the time around the watering hole. 
+
+\section{Hidden Attributes}
+
+
+% \bibliographystyle{abbrvnat}
+% \bibliography{ref}
+
+\end{document}
+
+
+
+
