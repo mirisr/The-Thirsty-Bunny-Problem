@@ -12,17 +12,17 @@
  
 \title{The Thirsty Bunny Problem}
 \author{Iris R. Seaman}
-\date{March 2019}
+\date{Spring 2019}
 
 \begin{document}
 \maketitle
 
 \section{Theory of Mind Formulation}
-Theory of mind formulations are about having agents form their own beliefs about other agent's beliefs, intent, and sometimes knowledge. When working in a multi-agent environment, this requires formulating beliefs about other agent's beliefs about other agents as well. This recursive pattern of forming beliefs about other beliefs and so forth becomes exponentially complex as the levels of reasoning deepens. Therefore, we aim to generalize a way of formulating reasoning about reasoning and inferring other hidden attributes such as intent and knowledge on probabilistic models that can describe a prior distribution of some agent and its environment. As a concrete example of an application in which a theory of mind formulation can be applied to, we introduce the Thirsty Bunny problem. However, we begin the section by describing hidden attributes in a theory of mind problem and the significance these attributes hold in revealing specific information about another agent. 
+Theory of mind formulations are about having agents form their own beliefs about other agent's beliefs, intent, and sometimes knowledge. When working in a multi-agent environment, this requires formulating beliefs about other agent's beliefs about other agents as well. This recursive pattern of forming beliefs about other beliefs and so forth becomes exponentially complex as the levels of reasoning deepens. Therefore, we aim to generalize a way of formulating reasoning about reasoning and inferring other hidden attributes such as intent and knowledge on probabilistic models that can describe a prior distribution of some agent and its environment. As a concrete example of an application in which a theory of mind formulation can be applied to, we introduce the Thirsty Bunny Problem. However, we begin the section by describing hidden attributes in a theory of mind problem and the significance these attributes hold in revealing specific information about another agent. 
 
 \section{Hidden Attributes in Theory of Mind Problems}
 
-Theory of mind problems are non-trivial due to the fact that an agent can not read minds. In order for agents to reason about what another agent is thinking, what it knows, and what it hopes to accomplish, it needs form answers to all those questions with observations of the agent. Observations, in a general sense, can include and is not limited to facial expressions, body movement, verbal responses, etc. 
+Theory of mind problems are non-trivial due to the fact that an agent can not read the mind of other agents. In order for agents to reason about what another agent is thinking, what it knows, and what it hopes to accomplish, it needs form answers to all those questions with observations of the agent. Observations, in a general sense, can include and is not limited to facial expressions, body movement, verbal responses, etc. 
 As agents aim to understand what another agent's understanding is, they must reason about the observations of the agent to form conclusions of the other agent's mental state. We can define different aspects of another agent's mental state as \textbf{hidden attributes}. Hidden attributes include \textit{beliefs, intent,} and \textit{knowledge} of other agents.  
 %  When agents simulate theory of mind, they have the ability to learn hidden attributes from observations. Hidden attributes can be another agent's beliefs, desires, intents, emotions, and knowledge. These attributes can not be directly learnt unless the other agent explicitly reveals the hidden information, or makes inferences based on exposed observations of the agent.
  
@@ -89,6 +89,15 @@ The basics for predators are simple. If predators are hungry and detect a bunny 
 
 \section{Hidden Attributes}
 
+We know map our hidden attributes to the goals we hope bunnies we learn. \\
+
+\noindent\textbf{Intent:} Bunnies learn the intent of other bunnies by learning when other bunnies are also thirsty.
+
+By learning about the thirst level of other bunnies, bunnies can reason about traveling together to the watering hole. \\
+
+\noindent\textbf{Belief:} Bunnies learn the beliefs of other bunnies by observing their actions and determining whether other bunnies trust others, whether there is a hungry predator nearby, and if it is safe to drink from the watering hole. \\
+
+\noindent \textbf{Knowledge:} Bunnies learn the age of other bunnies by observing their lifespan and by the independent actions a bunny takes to remain alive. 
 
 % \bibliographystyle{abbrvnat}
 % \bibliography{ref}
