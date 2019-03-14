@@ -22,7 +22,7 @@ Theory of mind formulations are about having agents form their own beliefs about
 
 \section{Hidden Attributes in Theory of Mind Problems}
 
-Theory of mind problems are non-trivial due to the fact that an agent can not read the mind of other agents. In order for agents to reason about what another agent is thinking, what it knows, and what it hopes to accomplish, it needs form answers to all those questions with observations of the agent. Observations, in a general sense, can include and is not limited to facial expressions, body movement, verbal responses, etc. 
+Theory of mind problems are non-trivial due to the fact that an agent can not read the mind of other agents. In order for agents to reason about what another agent is thinking, what it knows, and what it hopes to accomplish, it needs to form answers to all those questions with observations of the agent. Observations, in a general sense, can include and is not limited to, facial expressions, body movement, verbal responses, etc. 
 As agents aim to understand what another agent's understanding is, they must reason about the observations of the agent to form conclusions of the other agent's mental state. We can define different aspects of another agent's mental state as \textbf{hidden attributes}. Hidden attributes include \textit{beliefs, intent,} and \textit{knowledge} of other agents.  
 %  When agents simulate theory of mind, they have the ability to learn hidden attributes from observations. Hidden attributes can be another agent's beliefs, desires, intents, emotions, and knowledge. These attributes can not be directly learnt unless the other agent explicitly reveals the hidden information, or makes inferences based on exposed observations of the agent.
  
@@ -32,11 +32,13 @@ As agents aim to understand what another agent's understanding is, they must rea
 
 \noindent \textbf{Intent:} The intent of an agent can be described by answering the question of \textit{what does it want?}. It can be described as a desire, but more specifically, intent defines a goal an agent has yet to accomplish. \\
 
-\noindent \textbf{Belief:} The belief of an agent describes states of the world that an agent has not yet confirmed is true, but has made a supported guess with observations. \\
+\noindent \textbf{Belief:} The belief of an agent describes states of the world that an agent has not yet confirmed is true, but has made a supported guess with observations. Beliefs attempt to answer the question of \textit{what are your educated guesses?}\\
 
-\noindent \textbf{Knowledge:} An agent's knowledge is information that has been confirmed to be true. Truth can be established by patterns that are consistently confirmed, laws or nature, or proofs. 
+\noindent \textbf{Knowledge:} An agent's knowledge is information that has been confirmed to be true. Truth can be established by patterns that are consistently confirmed, laws or nature, or proofs. Finding what knowledge an agents has is similar to answering the question of \textit{What are the facts?}, or even, \textit{what are your learnt heuristics?}
 
-\subsection{Belief vs Knowledge} The two hidden attributes of belief and knowledge can be intermingled quite easily. However, we note that each of the attributes can support the other. Given prior knowledge, beliefs can be updated with new information. Reversely, beliefs that are repeatedly confirmed can be established as new knowledge and do not require to be further inferred. 
+\subsection{Belief vs Knowledge} The two hidden attributes of belief and knowledge can be intermingled quite easily. This means that separating the distinction between the two can be difficult. However, we aim to address the relationship between the two attributes and hope to clarify their distinctions. 
+
+Each of the attributes support the other. Given prior knowledge, beliefs can be updated with new information. Reversely, beliefs that are repeatedly confirmed can be established as new knowledge and do not require to be further inferred. Ideally, agents would updated their own knowledge by confirming beliefs, thus giving them the opportunity to gain beliefs supported on learnt knowledge. However, when an agent performs theory of mind to learn the knowledge of other agents, we separate beliefs based on confirmed information (which we refer to as knowledge). For example, an agent can have beliefs about the age of another bunny. The age of a bunny is a confirmed fact to itself. Therefore an agent is reasoning about the knowledge about another agent.In contrast, an agent updates its own beliefs about the beliefs of another agent by learning if another bunny has an \textit{educated guess} about the safety of the watering hole. The safety of the waterhole at a particular moment is not confirmed truth, therefore it is an education guess based on prior knowledge and observation. 
 
 \section{The Thirsty Bunny Problem}
 
@@ -44,7 +46,7 @@ As agents aim to understand what another agent's understanding is, they must rea
 This problem is formulated to motivate the application of theory of mind in order to learn several aspects of the mental states of other agents. Specifically we formulate the problem in such a way what we can define a joint formulation to learn beliefs, intent, and knowledge of other agents and perhaps even in a recursive manner. 
 
 \subsection{Background}
-We now describe a multi-agent scenario described as the Thirsty Bunny Problem. Given a map of the environment, a group of bunnies, $b \in \mathcal{B}$, bunny $i$, $b_i$, must learn how to survive by drinking at the watering hole when thirsty by performing theory of mind on other bunnies. By doing the bunny aims to learn 1) which other bunnies are wisest and can be trusted ( in order to mimic actions) , 2) when and if the watering hole is safe to go to, 3) when a predator is hunting. 
+We now describe a multi-agent scenario described as the Thirsty Bunny Problem. Given a map of the environment, a predator, and a group of bunnies, $b \in \mathcal{B}$, bunny $i$, $b_i$, must learn how to survive by drinking at the watering hole when thirsty by performing theory of mind on other bunnies. 
 
 \subsection{Bunny Basics}
 Each bunny ages independently. When $b_i$ dies of age, thirst, or predator, $b_j$ replaces $b_i$ in the group and is considered \textit{new}. New $b$s have basic knowledge of environment. They are rewarded each time period they remain alive. \\
@@ -53,7 +55,7 @@ Each bunny ages independently. When $b_i$ dies of age, thirst, or predator, $b_j
 \begin{itemize}
 	\item if they do not drink from the watering hold
     \item if seen by hungry predator
-    \item age 
+    \item old age 
 \end{itemize}
 
 \noindent\textbf{New bunny's prior knowledge:}
@@ -69,6 +71,7 @@ Each bunny ages independently. When $b_i$ dies of age, thirst, or predator, $b_j
     \item how they will die
     \item when they will die
     \item other bunnies' ages
+    \item the safety of the watering hole
 \end{itemize}
 
 \noindent\textbf{What bunnies should learn:}
@@ -79,25 +82,33 @@ Each bunny ages independently. When $b_i$ dies of age, thirst, or predator, $b_j
             \item when it is safe to drink
             \item when a predator is hungry 
         \end{itemize}
-    \item (alone) when a predator are hungry
+    \item (alone) when a predator is hungry
     \item (alone) when it is safe to drink
 \end{itemize}
 
-\section{Predator Basics}
+\subsection{Predator Basics}
 
-The basics for predators are simple. If predators are hungry and detect a bunny they will chase it and eat it. If they are not hungry because they are still full off the previous meal, they will not harm any bunnies in line of sight. Predators spend most of the time around the watering hole. 
+The basics for predators are simple. If predators are hungry and detect a bunny they will eat it. If they are not hungry (because they have eaten recently), they will not harm any bunnies in  their line of sight. Predators spend most of their time in areas surrounding the watering hole. 
 
-\section{Hidden Attributes}
+\subsection{Bunnies Aim to Learn}
+By performing theory of mind, the bunny aims to learn 1) which other bunnies are wisest and can be trusted ( in order to follow suit), 2) when and if the watering hole is safe to go to, 3) when a predator is hunting. There are times when mimicking the actions of wise bunnies is the quickest action to remain safe. In other cases, when a bunny is exploring independently, a bunny must form inferences on its own. 
 
-We know map our hidden attributes to the goals we hope bunnies we learn. \\
+\subsection{Relation to Hidden Attributes}
 
-\noindent\textbf{Intent:} Bunnies learn the intent of other bunnies by learning when other bunnies are also thirsty.
+We now map our hidden attributes to the goals we hope bunnies will learn. \\
 
-By learning about the thirst level of other bunnies, bunnies can reason about traveling together to the watering hole. \\
+\noindent\textbf{Intent:} Bunnies learn the intent of the predator. They learn to recognize when the predator is hungry and when it is not. This enables the bunny to learn what time period of the day is safest to drink from the watering hole.  \\
+
+For example, if $b_i$ observes $b_j$ drink from the watering hold and a predator near by, then $b_i$ can form beliefs about what $b_j$ believes about the safety of taking a drink. Perhaps $b_j$ either believes the predator is not hungry, or that the predator has not seen it. \\
+%  Bunnies learn the intent of other bunnies by learning when other bunnies are also thirsty.
+
+% By learning about the thirst level of other bunnies, bunnies can reason about traveling together to the watering hole. \\
 
 \noindent\textbf{Belief:} Bunnies learn the beliefs of other bunnies by observing their actions and determining whether other bunnies trust others, whether there is a hungry predator nearby, and if it is safe to drink from the watering hole. \\
 
-\noindent \textbf{Knowledge:} Bunnies learn the age of other bunnies by observing their lifespan and by the independent actions a bunny takes to remain alive. 
+\noindent \textbf{Knowledge:} Bunnies learn the age of other bunnies by observing their lifespan and by the independent actions a bunny takes to remain alive. \\
+
+For example, a possibility that $b_j$ is drinking while a predator is observed near the watering hole is that the bunny is young and is unaware of the danger. At this point inferring the credibility of the $b_j$'s actions is also important information. Therefore inferring the age of a bunny is crucial in a bunny process of seriously learning from other bunnies.
 
 % \bibliographystyle{abbrvnat}
 % \bibliography{ref}
